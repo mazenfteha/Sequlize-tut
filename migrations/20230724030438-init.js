@@ -39,6 +39,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'user',
+          key: 'id'
+        }
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -60,6 +68,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      channel_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'channel',
+          key: 'id'
+        }
+      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
@@ -71,6 +87,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropAllTables();
   }
 };
